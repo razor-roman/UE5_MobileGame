@@ -7,6 +7,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 //////////////////////////////////////////////////////////////////////////
 // AMobileGameCharacter
@@ -60,6 +61,7 @@ void AMobileGameCharacter::SetupPlayerInputComponent(class UInputComponent* Play
 	check(PlayerInputComponent);
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
+	PlayerInputComponent->BindAction("Change", IE_Released, this, &AMobileGameCharacter::Change);
 
 	PlayerInputComponent->BindAxis("Move Forward / Backward", this, &AMobileGameCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("Move Right / Left", this, &AMobileGameCharacter::MoveRight);
@@ -75,6 +77,22 @@ void AMobileGameCharacter::SetupPlayerInputComponent(class UInputComponent* Play
 	// handle touch devices
 	PlayerInputComponent->BindTouch(IE_Pressed, this, &AMobileGameCharacter::TouchStarted);
 	PlayerInputComponent->BindTouch(IE_Released, this, &AMobileGameCharacter::TouchStopped);
+}
+
+void AMobileGameCharacter::Change()
+{
+	TArray<AActor*> InteractiveActors;
+	UGameplayStatics::GetAllActorsWithTag(GetWorld(),"Interactive",InteractiveActors);
+	if(!InteractiveActors[0]) return;
+	UStaticMeshComponent* StaticMeshComponent = Cast<UStaticMeshComponent>(InteractiveActors[0]->GetComponentByClass(UStaticMeshComponent::StaticClass()));
+	if(!StaticMeshComponent) return;
+	UMaterialInterface* Material = StaticMeshComponent->GetMaterial(0);
+	UMaterialInstanceDynamic* MaterialInstance = UMaterialInstanceDynamic::Create(Material,this);
+	StaticMeshComponent->SetMaterial(0,MaterialInstance);
+
+	MaterialInstance->SetScalarParameterValue("ScalarParameter",0);
+	MaterialInstance->SetTextureParameterValue("TextureParameter",NewTextureRef);
+	MaterialInstance->SetVectorParameterValue("ColorParameter",FLinearColor(1,1,0,1));	
 }
 
 void AMobileGameCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)
@@ -98,6 +116,7 @@ void AMobileGameCharacter::LookUpAtRate(float Rate)
 	// calculate delta for this frame from the rate information
 	AddControllerPitchInput(Rate * TurnRateGamepad * GetWorld()->GetDeltaSeconds());
 }
+
 
 void AMobileGameCharacter::MoveForward(float Value)
 {
