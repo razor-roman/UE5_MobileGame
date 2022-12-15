@@ -257,7 +257,7 @@
       <workItem from="1670879828558" duration="1435000" />
       <workItem from="1670914480362" duration="1958000" />
       <workItem from="1670936583639" duration="3741000" />
-      <workItem from="1671003218368" duration="5547000" />
+      <workItem from="1671003218368" duration="8900000" />
     </task>
     <servers />
   </component>
@@ -268,16 +268,5 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Source/MobileGame/MobileGameCharacter.cpp</url>
-          <line>83</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
