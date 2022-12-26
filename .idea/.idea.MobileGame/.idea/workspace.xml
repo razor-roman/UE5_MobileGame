@@ -12,6 +12,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Source/MobileGame/MyControlRig.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/MobileGame/MyControlRig.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/MobileGame/PhotoLibrary/PhotoGalleryInterface.h" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -258,6 +260,15 @@
       <workItem from="1670914480362" duration="1958000" />
       <workItem from="1670936583639" duration="3741000" />
       <workItem from="1671003218368" duration="8900000" />
+      <workItem from="1671192050343" duration="1942000" />
+      <workItem from="1671200298827" duration="4578000" />
+      <workItem from="1671261091468" duration="2850000" />
+      <workItem from="1671550753328" duration="600000" />
+      <workItem from="1671603159078" duration="1211000" />
+      <workItem from="1671690064936" duration="2357000" />
+      <workItem from="1671894744140" duration="1916000" />
+      <workItem from="1671948072025" duration="620000" />
+      <workItem from="1672040263203" duration="2822000" />
     </task>
     <servers />
   </component>
